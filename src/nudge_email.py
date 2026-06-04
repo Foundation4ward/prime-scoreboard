@@ -130,7 +130,6 @@ def render(name, m):
                  f'<td style="padding:5px 0 5px 10px;font-size:13px;font-weight:700;color:#0f172a;text-align:right;white-space:nowrap;">{n} <span style="color:#059669;font-weight:600;">&middot; {s}&#10003;</span></td></tr>')
 
     pre = f"Weekly streak at {m['last7']} &mdash; {GOAL_REFUGEES - m['emp_rfd']} to go, together. Drop a +1. &#10024;"
-    greet = (name or "team").strip().split()[0] if name else "team"
 
     head = ('<tr><td style="background:#6d28d9;background:linear-gradient(135deg,#6d28d9 0%,#7c3aed 45%,#22d3ee 100%);padding:26px 24px 24px;">'
             '<div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,.82);text-transform:uppercase;">&#9656; PRIME &middot; daily quest &#10024;</div>'
@@ -138,7 +137,7 @@ def render(name, m):
             '<div style="color:rgba(255,255,255,.92);font-size:13px;margin-top:7px;">A note from Yusuf &middot; we clear this one as a team &#10024;</div></td></tr>')
 
     intro = (f'<tr><td style="padding:22px 24px 6px;color:#374151;font-size:15px;line-height:1.6;">'
-             f'<p style="margin:0 0 12px;">Hi {greet},</p>'
+             '<p style="margin:0 0 12px;">Hi Team!</p>'
              f'<p style="margin:0;">Our daily scoreboard pulls <b>live</b> from Zoho, so it only reflects what <b>we</b> log &mdash; as a team. '
              f'Here&rsquo;s where we all stand right now, and how we close the gap together.</p></td></tr>')
 
