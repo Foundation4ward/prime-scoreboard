@@ -38,6 +38,35 @@ REPO_URL = _cv("REPO_URL", "https://github.com/Foundation4ward/prime-scoreboard"
 CREATE_OUTREACH = f"https://crm.zoho.com/crm/org{ORG}/tab/{OUTREACH_MODULE}/create"
 STUDENTS_LIST = f"https://crm.zoho.com/crm/org{ORG}/tab/{STUDENTS_MODULE}/custom-view/{STUDENTS_VIEW}/list"
 
+# Tomo's daily nugget — one rotates in per day (date-based, stable within a day). AI tips + did-you-knows
+# + motivational lines, kept fabrication-free (no invented stats; quotes are well-attributed or proverbs).
+NUGGETS = [
+    "&#128161; AI tip: paste a job posting into an AI and ask for the top 5 skills to put on the candidate&rsquo;s CV.",
+    "&#128161; AI tip: ask an AI to rewrite a CV bullet to open with a strong action verb and a real result.",
+    "&#128161; AI tip: have an AI draft three outreach messages, then send the one that sounds most human.",
+    "&#128161; AI tip: before an interview, ask an AI for the likely questions for that exact role and company.",
+    "&#128161; AI tip: ask an AI to pull the keywords from a posting so the CV gets past automated screening.",
+    "&#128161; AI tip: turn a long job description into a one-line &lsquo;what they really want&rsquo; summary to brief a candidate fast.",
+    "&#128161; AI tip: ask an AI to polish a CV into clear, confident English while keeping the candidate&rsquo;s own voice.",
+    "&#128161; AI tip: have an AI build a 30-second &lsquo;tell me about yourself&rsquo; for the role, then practice it out loud.",
+    "&#10024; Did you know: many jobs are never advertised &mdash; they&rsquo;re filled through referrals and outreach. The contacts you log are how people get found.",
+    "&#10024; Did you know: a warm follow-up often reopens a stalled conversation &mdash; logging the first contact is what reminds us to send it.",
+    "&#10024; Did you know: a personal referral can jump a candidate past the r&eacute;sum&eacute; pile &mdash; that&rsquo;s the door your outreach opens.",
+    "&#10024; Did you know: multilingual, cross-border experience is a real strength &mdash; worth surfacing on every CV you help build.",
+    "&#10024; Did you know: clear notes on each contact make the next officer&rsquo;s call easier &mdash; your log is a gift to the whole team.",
+    "&#10024; Did you know: practising answers out loud beats re-reading them &mdash; a quick mock interview before the real one helps.",
+    "&#128172; &ldquo;Alone we can do so little; together we can do so much.&rdquo; &mdash; Helen Keller",
+    "&#128172; &ldquo;It always seems impossible until it&rsquo;s done.&rdquo; &mdash; Nelson Mandela",
+    "&#128172; &ldquo;A journey of a thousand miles begins with a single step.&rdquo; &mdash; Lao Tzu",
+    "&#128172; &ldquo;The best way to predict the future is to invent it.&rdquo; &mdash; Alan Kay",
+    "&#128172; &ldquo;If you want to go fast, go alone. If you want to go far, go together.&rdquo; &mdash; proverb",
+    "&#128172; Small steps, repeated daily, cover big distances.",
+    "&#128172; Progress over perfection &mdash; one logged call still moves the board.",
+    "&#128172; Every conversation you log is someone one step closer to a job.",
+    "&#128172; Consistency beats intensity &mdash; a little every day wins.",
+    "&#128172; Not perfect today &mdash; just one step better than yesterday.",
+]
+
 
 def load_env():
     env = {}
@@ -130,6 +159,7 @@ def render(name, m):
                  f'<td style="padding:5px 0 5px 10px;font-size:13px;font-weight:700;color:#0f172a;text-align:right;white-space:nowrap;">{n} <span style="color:#059669;font-weight:600;">&middot; {s}&#10003;</span></td></tr>')
 
     pre = f"Weekly streak at {m['last7']} &mdash; {GOAL_REFUGEES - m['emp_rfd']} to go, together. Drop a +1. &#10024;"
+    nugget = NUGGETS[date.today().toordinal() % len(NUGGETS)]   # rotates daily, stable within the day
 
     head = ('<tr><td style="background:#6d28d9;background:linear-gradient(135deg,#6d28d9 0%,#7c3aed 45%,#22d3ee 100%);padding:26px 24px 24px;">'
             '<div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,.82);text-transform:uppercase;">&#9656; PRIME &middot; daily quest &#10024;</div>'
@@ -204,7 +234,8 @@ def render(name, m):
               '<td style="vertical-align:top;padding-left:12px;">'
               '<div style="font-size:14px;font-weight:800;color:#5b21b6;margin-bottom:5px;">TOMO <span style="font-size:11px;font-weight:700;color:#7c3aed;">&middot; PRIME hype-friend &#10024;</span></div>'
               '<div style="background:#ffffff;border:1px solid #ddd6fe;border-radius:14px;border-top-left-radius:3px;padding:11px 14px;font-size:14px;color:#1e293b;line-height:1.55;box-shadow:0 2px 8px rgba(109,40,217,.08);">'
-              f'&ldquo;That&rsquo;s the whole <b>party&rsquo;s</b> work up there &mdash; <b>{m["emp_rfd"]}/{GOAL_REFUGEES}</b> already! <b>{GOAL_REFUGEES - m["emp_rfd"]} more</b> and we clear the quest <b>together</b>. Every log = <b>+1 XP</b>. Let&rsquo;s gooo! &#128293;&#10024;&rdquo;</div>'
+              f'<div style="font-size:14px;color:#1e293b;">{nugget}</div>'
+              f'<div style="margin-top:8px;color:#5b21b6;font-size:13px;">&hellip; and we&rsquo;re <b>{m["emp_rfd"]}/{GOAL_REFUGEES}</b>, <b>{GOAL_REFUGEES - m["emp_rfd"]}</b> to go. Every log gets us there &mdash; let&rsquo;s gooo! &#128293;</div></div>'
               '</td></tr></table></div></td></tr>')
 
     foot = ('<div style="max-width:600px;color:#9aa1ab;font-size:11px;margin:12px auto 0;text-align:center;line-height:1.5;">'
