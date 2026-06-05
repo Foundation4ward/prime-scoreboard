@@ -238,6 +238,15 @@ def render(name, m):
               f'<div style="margin-top:8px;color:#5b21b6;font-size:13px;">&hellip; and we&rsquo;re <b>{m["emp_rfd"]}/{GOAL_REFUGEES}</b>, <b>{GOAL_REFUGEES - m["emp_rfd"]}</b> to go. Every log gets us there &mdash; let&rsquo;s gooo! &#128293;</div></div>'
               '</td></tr></table></div></td></tr>')
 
+    sources = ('<tr><td style="padding:2px 24px 18px;">'
+               '<div style="border-top:1px solid #edeff2;padding-top:12px;font-size:11px;color:#9aa1ab;line-height:1.65;">'
+               '<b style="color:#6b7280;">Sources &amp; definitions</b> &mdash; pulled live from Zoho CRM at send time (no cache or sync layer):<br>'
+               '&bull; <b>Jobs secured</b> = students marked <b>Employed</b> who are refugees or forcibly displaced<br>'
+               '&bull; <b>Active</b> = job-seeking + studying + enrolled &nbsp;&bull;&nbsp; <b>In pipeline</b> = prospective (not yet enrolled)<br>'
+               f'&bull; <b>Goal</b> = {GOAL_LABEL}<br>'
+               '&bull; <b>Team activity</b> = each officer&rsquo;s logged outreach (calls, emails, meetings)<br>'
+               'Generated automatically each weekday morning.</div></td></tr>')
+
     foot = ('<div style="max-width:600px;color:#9aa1ab;font-size:11px;margin:12px auto 0;text-align:center;line-height:1.5;">'
             'Live from Zoho CRM at send time &middot; green button &rarr; new Outreach Activity &middot; '
             'you&rsquo;re on the PRIME team list.</div>')
@@ -254,7 +263,7 @@ def render(name, m):
         + preheader +
         '<table cellpadding="0" cellspacing="0" style="width:100%;background:#edeafc;background:linear-gradient(160deg,#edeafc,#e0f7fe);"><tr><td align="center" style="padding:20px 10px;">'
         '<table cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:22px;overflow:hidden;box-shadow:0 12px 34px rgba(76,29,149,.16);">'
-        + head + intro + gapcard + goal + snap + board + mascot + cta + close + feedback +
+        + head + intro + gapcard + goal + snap + board + mascot + cta + close + feedback + sources +
         '</table>' + foot +
         '</td></tr></table></body></html>'
     )
